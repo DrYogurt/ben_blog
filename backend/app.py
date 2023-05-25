@@ -9,7 +9,7 @@ from datetime import datetime
 import time
 
 app = Flask(__name__)
-CORS(app,origins=['https://blog.benzr.xyz','localhost:80'])
+CORS(app,origins=['https://blog.benzr.xyz','http://localhost:*','http://backend:*'])
 
 def valid_email(email):
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'

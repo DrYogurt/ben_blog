@@ -23,7 +23,7 @@ const Blog = () => {
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    axios.get('http://backend:5000/posts')
+    axios.get('/api/posts')
       .then(response => {
         setPostIds(response.data.map(post => post.id));
       })
