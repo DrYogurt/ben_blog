@@ -11,9 +11,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - type: bind
-        source: ./backend/posts
-        target: /app/posts
+      - ./backend/posts:/app/posts
     ports:
       - "5000:5000"
     restart: always
@@ -23,15 +21,9 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     volumes:
-      - type: bind
-        source: ./frontend/build
-        target: /usr/share/nginx/html
-      - type: bind
-        source: ./certbot/conf
-        target: /etc/letsencrypt
-      - type: bind
-        source: ./certbot/www
-        target: /var/www/certbot
+      - ./frontend/build:/usr/share/nginx/html
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
