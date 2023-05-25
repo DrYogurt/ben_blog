@@ -35,7 +35,7 @@ const Footer = () => {
           return;
         }
     
-        axios.post('http://backend:5000/subscribe', { email })
+        axios.post('/api/subscribe', { email })
           .then(response => {
             console.log(response);
             setEmail("");
