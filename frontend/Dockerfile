@@ -1,5 +1,5 @@
 # Set a Node.js base image
-FROM node:14-alpine
+FROM node:14-alpine as build
 
 # Set the working directory
 WORKDIR /app
@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:1.19.0-alpine
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
