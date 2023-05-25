@@ -8,7 +8,7 @@ import re
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app,origins=['blog.benzr.xyz','localhost:3000']
+CORS(app,origins=['https://blog.benzr.xyz','localhost:80']
 
 def valid_email(email):
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
