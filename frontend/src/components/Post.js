@@ -14,7 +14,7 @@ const Post = ({ id, postIds, onPostChange }) => {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://backend:5000/post/${id}`)
+    axios.get(`/api/post/${id}`)
       .then(response => {
         setPost(response.data);
       })
