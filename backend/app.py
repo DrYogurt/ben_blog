@@ -6,6 +6,7 @@ import markdown
 import os
 import re
 from datetime import datetime
+import time
 
 app = Flask(__name__)
 CORS(app,origins=['https://blog.benzr.xyz','localhost:80'])
@@ -33,15 +34,24 @@ def store_email(email):
         file.write(email + '\n')
         return True
 
+last_modified_time = 0
+index_df = None
 
+def load_index():
+    global last_modified_time, index_df
+    new_modified_time = os.path.getmtime('posts/index.csv')
 
-# Load the index CSV into a pandas DataFrame.
-index_df = pd.read_csv('posts/index.csv')
-index_df['date'] = pd.to_datetime(index_df['date'])
-index_df['fdate'] = index_df['date'].apply(lambda x: x.strftime('%B %d'))
+    # If the file was modified since last load.
+    if new_modified_time != last_modified_time:
+        index_df = pd.read_csv('posts/index.csv')
+        index_df['date'] = pd.to_datetime(index_df['date'])
+        index_df['fdate'] = index_df['date'].apply(lambda x: x.strftime('%B %d'))
+        last_modified_time = new_modified_time
+
 
 @app.route('/posts', methods=['GET'])
 def get_posts():
+    load_index()
     # Get the current date
     now = datetime.now()
 
@@ -56,6 +66,7 @@ def get_posts():
 
 @app.route('/post/<int:post_id>', methods=['GET'])
 def get_post(post_id):
+    load_index()
     # Get the current date
     now = datetime.now()
 
