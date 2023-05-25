@@ -25,7 +25,7 @@ const TimeLine = ({ onPostSelect, selectedPost, resetPost }) => {
   }, {}));
 
   useEffect(() => {
-    axios.get('http://localhost:5000/posts')
+    axios.get('http://backend:5000/posts')
       .then(response => {
         setPosts(response.data);
       })
