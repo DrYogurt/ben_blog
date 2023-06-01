@@ -24,9 +24,9 @@ const Post = ({ id, postIds, onPostChange }) => {
   }, [id]);
 
   const currentIndex = postIds.indexOf(id);
-  const prevPostId = currentIndex > 0 ? postIds[currentIndex - 1] : null;
-  const nextPostId = currentIndex < postIds.length - 1 ? postIds[currentIndex + 1] : null;
-  const latestPostId = postIds[postIds.length - 1];
+  const nextPostId = currentIndex > 0 ? postIds[currentIndex - 1] : null;
+  const prevPostId = currentIndex < postIds.length - 1 ? postIds[currentIndex + 1] : null;
+  const latestPostId = postIds[0];
 
   const handleButtonClick = (newPostId) => {
     if (newPostId !== null) {
