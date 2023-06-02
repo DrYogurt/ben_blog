@@ -5,12 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import theme from '../theme';
+import { useTheme } from '@mui/material/styles';
 import DOMPurify from 'dompurify';
 
 
 const Post = ({ id, postIds, onPostChange }) => {
-  
+  const theme = useTheme();
   const [post, setPost] = useState(null);
 
   useEffect(() => {

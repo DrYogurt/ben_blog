@@ -9,10 +9,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import theme from '../theme';
 import Footer from './Footer.js';
+import { useTheme } from '@mui/material/styles';
+
+
 
 const Blog = () => {
+  const theme = useTheme();
   const { postId } = useParams();
   const navigate = useNavigate();
   const initialPostId = !isNaN(Number(postId)) ? Number(postId) : null;
