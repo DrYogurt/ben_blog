@@ -56,7 +56,10 @@ const TimeLine = ({ onPostSelect, selectedPost, resetPost }) => {
       <Timeline position={selectedPost === null ? "alternate" : "left"}>
         {posts.map((post, index) => (
           <TimelineItem key={post.id} ref={postRefs.current[post.id]}>
-            <TimelineOppositeContent color="text.primary">
+            <TimelineOppositeContent color="text.primary"
+            onMouseEnter={() => handleMouseEnter(post.id)}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => onPostSelect(post.id)}>
                 {selectedPost === null && post.fdate}
             </TimelineOppositeContent>
             <TimelineSeparator>
@@ -75,7 +78,10 @@ const TimeLine = ({ onPostSelect, selectedPost, resetPost }) => {
             />
               {index !== posts.length - 1 && <TimelineConnector sx={{ backgroundColor: theme.palette.secondary.main }}/>}
             </TimelineSeparator>
-            <TimelineContent color="text.primary">
+            <TimelineContent color="text.primary"
+            onMouseEnter={() => handleMouseEnter(post.id)}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => onPostSelect(post.id)}>
                {selectedPost === null ? post.displayname : post.fdate}
             </TimelineContent>
           </TimelineItem>
