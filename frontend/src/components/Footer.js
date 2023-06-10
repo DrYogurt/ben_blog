@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import axios from 'axios';
 
@@ -16,6 +17,7 @@ const Footer = () => {
     const theme = useTheme();
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     
 
     const handleEmailChange = (event) => {
@@ -68,7 +70,7 @@ const Footer = () => {
                         </Button>
                     </form>
                 </Grid>
-                <Grid item xs={12} sm={5} md={4} lg={3}>
+                {!matches && <Grid item xs={12} sm={5} md={4} lg={3}>
                     <Typography variant="h6" align="center">
                         Follow us on social media
                     </Typography>
@@ -79,7 +81,7 @@ const Footer = () => {
                             </ListItem>
                         ))}
                     </List>
-                </Grid>
+                </Grid>}
             </Grid>
         </Box>
     );
