@@ -6,12 +6,15 @@ import IconButton from '@mui/material/IconButton';
 import LightMode from '@mui/icons-material/LightMode';  // Sun icon
 import DarkMode from '@mui/icons-material/DarkMode';  // Moon icon
 import { ThemeContext } from '../ThemeContext';  // Don't forget to adjust the relative path to your ThemeContext.js file
-import lightTheme, { darkTheme } from '../theme.js';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 const Header = () => {
     const theme = useTheme();
     const { themeType, toggleTheme } = useContext(ThemeContext);
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
       <Box sx={{ 
           width: '100%', 
@@ -25,7 +28,7 @@ const Header = () => {
         <Typography variant="h4" color="text.primary">
             To Whom it May Concern
         </Typography>
-        <IconButton 
+        {!matches && <IconButton 
           onClick={toggleTheme} 
           sx={{ 
             position: 'absolute',
@@ -34,8 +37,7 @@ const Header = () => {
           }}
         >
           {theme.palette.type === 'light' ? <LightMode /> : <DarkMode />}
-          {console.log(theme.palette.mode)}
-        </IconButton>
+        </IconButton>}
       </Box>
     );
   }
