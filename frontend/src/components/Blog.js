@@ -36,6 +36,7 @@ const Blog = () => {
   }, []);
 
   useEffect(() => {
+    console.log('postId:', postId); // Add logging
     if (postId) {
       const postIdNumber = Number(postId);
       if (!isNaN(postIdNumber)) {
@@ -47,8 +48,9 @@ const Blog = () => {
   }, [postId]);
 
   const handlePostSelect = (id) => {
+    console.log('handlePostSelect:', id); // Add logging
     setSelectedPost(id);
-    navigate(`/post/${id}`);
+    navigate('/post/${id}');
     window.scrollTo(0, 0);
     if (matches) {
       setDrawerOpen(false);
