@@ -50,7 +50,7 @@ const Blog = () => {
   const handlePostSelect = (id) => {
     console.log('handlePostSelect:', id); // Add logging
     setSelectedPost(id);
-    navigate("/post/${id}");
+    navigate(`/post/${id}`);
     window.scrollTo(0, 0);
     if (matches) {
       setDrawerOpen(false);
