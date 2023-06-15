@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Changed BrowserRouter to HashRouter
 import Blog from './components/Blog.js';
 import Header from './components/Header.js';
 import Box from '@mui/material/Box';
